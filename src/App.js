@@ -1,9 +1,16 @@
 // import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
   return (
-    <div className='btn btn-danger'>hello</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
