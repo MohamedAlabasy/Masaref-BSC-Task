@@ -11,10 +11,10 @@ export default function Medication({ medicationData }) {
             <div className="card-body py-0 ">
                 <div className="book-content ">
                     <div className="row d-flex justify-content-around">
-                        <div className="col-12">
+                        {medicationData.dose && <div className="col-12">
                             <span>Dose </span> : {medicationData.dose}
                         </div>
-
+                        }
                         <div className="col-12">
                             <div style={{
                                 display: 'block', width: 600, paddingLeft: 30
