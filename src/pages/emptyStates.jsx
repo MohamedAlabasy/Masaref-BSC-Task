@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaHome } from "react-icons/fa";
 
 import empty from '../assets/images/empty.png'
 
@@ -8,7 +9,9 @@ export default function NotFound() {
             <div >
                 <img src={empty} alt="there is no data to show" />
             </div>
-
+            <Link to={"/"} className="btn btn-dark ms-3 " style={{ width: '150px' }}>
+                <FaHome style={{ width: '20px', height: '20px', color: 'white' }} />
+            </Link>
         </div>
 
     )

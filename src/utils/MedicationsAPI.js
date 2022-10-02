@@ -12,4 +12,4 @@ const headers = {
 export const getAll = () =>
   fetch(`${api}/v3/a78af611-3af6-481c-98a0-ba04a5f7ce70`, { headers })
     .then((res) => res.json())
-    .then((data) => data.books);
+    .then((data) => data.problems[0].Diabetes[0].medications[0].medicationsClasses[0]);
