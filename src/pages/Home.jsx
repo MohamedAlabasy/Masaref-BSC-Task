@@ -10,27 +10,52 @@ export default function Home() {
     useEffect(() => {
         const getAllBooksData = async () => {
             const medicationAPIData = await getAll()
+            // #=======================================================================================#
+            // #			                          old solution                                     #
+            // #=======================================================================================#
 
             // To get an array of analgesics data correctly then can loop on it
-            const analgesicsArray = medicationAPIData.Analgesics.map((_analgesicsData, index) => {
-                let myArr = []
-                for (let i = 0; i < Object.keys(_analgesicsData).length; i++) {
-                    myArr.push([Object.values(_analgesicsData)[i]][0][0])
-                }
-                return myArr
-            })
-            setAnalgesicsData(analgesicsArray[0])
+            // const analgesicsArray = medicationAPIData.Analgesics.map((_analgesicsData, index) => {
+            //     let myArr = []
+            //     for (let i = 0; i < Object.keys(_analgesicsData).length; i++) {
+            //         myArr.push([Object.values(_analgesicsData)[i]][0][0])
+            //     }
+            //     return myArr
+            // })
+            // setAnalgesicsData(analgesicsArray[0])
 
 
             // To get an array of painkillers data correctly then can loop on it
-            const painkillersArray = medicationAPIData.painkillers.map((_painkillersData) => {
-                let myArr = []
-                for (let i = 0; i < Object.keys(_painkillersData).length; i++) {
-                    myArr.push([Object.values(_painkillersData)[i]][0][0])
-                }
-                return myArr
-            })
-            setPainkillersData(painkillersArray[0])
+            // const painkillersArray = medicationAPIData.painkillers.map((_painkillersData) => {
+            //     let myArr = []
+            //     for (let i = 0; i < Object.keys(_painkillersData).length; i++) {
+            //         myArr.push([Object.values(_painkillersData)[i]][0][0])
+            //     }
+            //     return myArr
+            // })
+            // setPainkillersData(painkillersArray[0])
+
+
+
+
+            // #=======================================================================================#
+            // #			                new solution => better solution                            #
+            // #=======================================================================================#
+
+            let medicationDataArray = [];
+
+            for (const key in medicationAPIData.Analgesics[0]) {
+                medicationDataArray.push(medicationAPIData.Analgesics[0][key][0])
+            }
+            setAnalgesicsData(medicationDataArray)
+
+
+            medicationDataArray = [];
+            for (const key in medicationAPIData.painkillers[0]) {
+                medicationDataArray.push(medicationAPIData.painkillers[0][key][0])
+            }
+            setPainkillersData(medicationDataArray)
+
         }
 
         getAllBooksData()
